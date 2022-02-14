@@ -1,1 +1,1 @@
-web: cd ./webProject/ && waitress-serve --listen=127.0.0.1:8000 webProject.wsgi:application
+web: cd ./webProject && gunicorn webProject.wsgi:application --log-file - --log-level debug
