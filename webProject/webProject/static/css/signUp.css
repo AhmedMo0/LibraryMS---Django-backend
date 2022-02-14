@@ -1,0 +1,101 @@
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ecf0f3;
+	height: 625px;
+	margin: 0;
+    }
+
+
+    * {box-sizing: border-box}
+    input[type=text], input[type=password] {
+       width: 30%;
+       padding: 10px;
+       margin: 10px 0 10px 0;
+       border: none;
+       background: #f1f1f1;
+       }
+
+    .signUp-form{
+        height: 100%;
+    	width: 550px;
+    	position: relative;
+    	/* left: 35%; */
+    	/* top: 20%; */
+    	background-color: #ecf0f3;
+    	box-shadow: -2px 10px 18px #cbced1, -1px 13px 20px #cbced1;
+    	border: 5px solid #F1F3F8;
+    	padding: 31px 40px 23px 30px;
+    	border-radius: 25px;
+    }
+
+
+    input[type=text]:focus, input[type=password]:focus {
+       background-color: #ddd;
+       outline: none;
+       }
+
+    hr {
+       margin-bottom: 25px;
+        border-radius: 15px;
+        border-color: #F1F3F8;
+       }
+    #email{
+        margin-right:140px;
+        margin-left:25px;
+        border-radius: 15px;
+    }
+    #pass{
+        margin-right:100px;
+        margin-left:15px;
+        border-radius: 15px;
+    }
+    #con{
+        margin-left:20px;
+        margin-right:40px;
+        border-radius: 15px;
+    }
+    #user{
+        margin-right:100px;
+        margin-left:15px;
+        border-radius: 15px;
+    }
+    button {
+        background-color: #3588aa;
+        color: white;
+        position: absolute;
+        padding: 14px 20px;
+        margin: 10px;
+        top: 75%;
+        left: 22%;
+        border: none;
+        cursor: pointer;
+        width: 260px;
+        opacity: 0.9;
+        border-radius: 18px;
+    
+       }
+
+    button:hover {
+       opacity:1;
+       }
+    .cancelbtn {
+        padding: 14px 20px;
+        position: absolute;
+        left: 22%;
+        top: 85%;
+        background-color: #07a7a7;
+       }
+   .container {
+       padding: 15px;
+       height: 97%;
+       text-align: -webkit-center;
+       }
+    .clearfix{
+        width:30%;
+        margin:auto;
+    }
+
+    .signupbtn:hover{
+        background-color:#006699;
+    }

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+    <link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+
+    <style>
+        .books a
+        {
+            float: right;
+            border: 1px solid;
+            border-radius: 15px;
+            padding: 4px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="header">
+        <div id="admin-form">
+            <img src="{% static 'images/user.jpg' %}" class="adminImg">
+            <label id="username1" >Username</label>
+            <label id="user-view">{{request.user.username}}</label>
+            <label id="email">Email</label>
+            <label id="email-view">{{request.user.email}}</label>
+            <a id="ChangePassword-link" href="{% url 'reset_password' %}" target="_blank">Change Password</a>
+        </div>
+
+        <div class="booksArea">
+            <h2>My Books</h2>
+            <div class="books">
+                {% for book in books %}
+                    <div id="book1-form">
+                        {% if book.image %}
+                            <img src="{{book.image.url}}" id="book1-img">
+                        {% else %}
+                            <img src="{% static 'images/book1.jpg' %}" id="book1-img">
+                        {% endif %}
+                        <p class="title"><span>Title</span> <span>{{book.Title}}</span></p>
+                        <p class="author"><span>Author</span> <span>{{book.Author}}</span></p>
+                        <p class="price"><span>Price</span> <span>{{book.Price}}</span></p>
+                        <p class="status"><span>Status</span> <span>{{book.status}}</span></p>
+                        {% if period.period%}
+                            <p class="status"><span>Borrowing untill</span> <span>{{period.period}}</span></p>
+                        {% endif %}
+                        <a href="{% url 'delete' book.isbn %}">Return Book</a>
+                        <!-- <p class="title1">Duration</p>
+                        <input class="from-view1" type="time">
+                        <p class="title2" >To</p>
+                        <input class="to-view2" type="time"> -->
+                    </div>
+                {% endfor %}
+            </div>        
+        </div>
+        
+    </div>
+
+
+{% endblock %}

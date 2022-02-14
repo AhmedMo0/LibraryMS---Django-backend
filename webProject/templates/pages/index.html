@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Home Page</title>
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock%}
+
+{% block content %}
+    <!-- <h1>Hello in Index</h1> -->
+
+<!--     
+    <div class="col-md-6">
+
+        {% if messages %}
+            {% for m in messages%}
+                <div class="alert alert-{{m.tags}}">
+                    <p>{{m}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    </div> -->
+
+
+
+    {% if books%}
+        <h2>Books</h2>
+    {% else %}
+        <h2>There's no books yet!</h2>
+    {% endif %}
+    <div id="cards">
+        {% for book in books %}
+            <div class="card">
+                <button type="button" class="divBtn"><a href="{% url 'userProfile' book.isbn %}">Borrow</a></button>
+                {% if book.image%}
+                    <img src="{{book.image.url}}" class="divImg">
+                {% else %}
+                <img src="{% static 'images/book1.jpg' %}" class="divImg">
+                {% endif %}
+                <p class="cardText">Title: {{book.Title}}</p>
+                <p class="cardText">Author: {{book.Author}}</p>
+                <p class="cardText">Status: {{book.status}}</p>
+                <p class="cardText">Price: {{book.Price}}</p>
+            </div>
+        {% endfor %}
+        <!-- <div class="card">
+            <button type="button" class="divBtn"> Borrow</button>
+            <img src="{% static 'images/book1.jpg' %}" class="divImg">
+            <p class="cardText">Book Title</p>
+            <p class="cardText">Author</p>
+            <p class="cardText">Book Status</p>
+        </div>
+        <div class="card">
+            <button type="button" class="divBtn"> Borrow</button>
+            <img src="{% static 'images/book3.jpg' %}" class="divImg">
+            <p class="cardText">Book Title</p>
+            <p class="cardText">Author</p>
+            <p class="cardText">Book Status</p>
+        </div>
+        <div class="card">
+            <button type="button" class="divBtn"> Borrow</button>
+            <img src="{% static 'images/book4.jpg' %}" class="divImg">
+            <p class="cardText">Book Title</p>
+            <p class="cardText">Author</p>
+            <p class="cardText">Book Status</p>
+        </div> -->
+    </div>
+
+   
+{% endblock%}
+
+

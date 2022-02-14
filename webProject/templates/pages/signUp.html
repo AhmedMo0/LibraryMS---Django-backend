@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block meta %}
+    <link rel="stylesheet" href="{% static 'css/signUp.css' %}">
+    <script src="{% static 'js/signUp.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="signUp-form">
+            
+        <form  method="POST">
+            {% csrf_token %}
+
+        <h1>Admin Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label><b id="email">Email</b></label>
+        <!-- <input id = "emailView" type="text" placeholder="Enter Email" required name="email"> -->
+        {{form.email}}
+        {% if form.email.errors %}
+            <style>
+                #emailView{
+                border: 1px solid red;
+                }
+            </style>
+        {% endif %}
+        <br>
+        <label><b id="user">Username</b></label>
+        <!-- <input id = "userNameView" type="text" placeholder="Enter Username" required name="username"> -->
+        {{form.username}}
+        <br>
+        <label><b id="pass">Password</b></label>
+        <!-- <input id = "passView" type="password" placeholder="Enter Password" required name="password"> -->
+        {{form.password1}}
+        <br>
+        <label><b id="con">Confirm Password</b></label>
+        <!-- <input id = "confirmView" type="password" placeholder="Confirm Password" required> -->
+        {{form.password2}}
+        {% if form.password2.errors %}
+            <style>
+                #confirmView{
+                border: 1px solid red;
+                }
+            </style>
+            {% for e in  form.password2.errors%}
+            <small>{{e}}</small>
+            {% endfor %}
+        {% endif %}
+
+        {% comment%}
+            {% for error in form.password2.errors%}
+                    <small>{{error}}</small>
+            {% endfor %}
+        {% endcomment %}
+
+        {% if form.non_field_errors %}
+                <p>{{form.non_field_errors}}</p>
+        {% endif %}
+
+        <div class="clearfix">
+            <button type="submit" class="signupbtn">Sign Up</button>
+            <button type="button" class="cancelbtn" onclick="goHomePage();" >Cancel</button>
+        </div>
+    </form>
+        </div>
+    </div>
+
+    <script>
+        var homeLink = "{% url 'index' %}";
+    </script>
+{%endblock%}

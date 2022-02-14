@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% block meta %}
+    {% endblock %}
+    <title>Document</title>
+
+    <style>
+        .a_c
+        {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .right
+        {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="navBar">
+        <ul>
+            <li class="navButton" ><a class="a_c" href="{% url 'index'%}">Home</a></li>
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_student %}
+                    <li class="navButton" ><a class="a_c" href="{% url 'userProfile'%}">User Profile</a></li>
+                {% else  %}
+                    <li class="navButton" ><a class="a_c" href="{% url 'adminProfile'%}">Admin Profile</a></li>
+                {% endif  %}
+                <li class="navButton" ><a class="a_c" href="{% url 'logout'%}">logout</a></li>
+                <li class="navButton right" ><span>Hello {{request.user.username}}!</span></li>
+            {% else %}
+                <li class="navButton" ><a class="a_c" href="{% url 'signUp'%}">Admin signup</a></li>
+                <li class="navButton" ><a class="a_c" href="{% url 's_signUp'%}">Student signup</a></li>
+                <li class="navButton" ><a class="a_c" href="{% url 'login'%}">login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {%block content%}
+    {%endblock%} 
+</body>
+</html>

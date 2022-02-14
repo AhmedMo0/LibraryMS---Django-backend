@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="login-form">
+        <div id="login-head">
+            <h1>Login</h1>
+        </div>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+
+
+        <span>
+            <!-- <input id="login-view" type="text" placeholder="Email" id=""> -->
+            
+            {{loginform.email}}
+        </span>
+        
+        {% if loginform.email.errors %}
+            <style>
+                #login-view{
+                border: 1px solid red;
+                }
+            </style>
+            {% for e in  loginform.email.errors%}
+            <small>{{e}}</small>
+            {% endfor %}
+        {% endif %}
+
+        <span>
+            <!-- <input id="login-view1" type="password" placeholder="Password" id="0"> -->
+            {{loginform.password1}}
+        </span>
+
+        {% if loginform.password1.errors %}
+            <style>
+                #login-view1{
+                border: 1px solid red;
+                }
+            </style>
+            {% for e in  loginform.password1.errors%}
+            <small>{{e}}</small>
+            {% endfor %}
+        {% endif %}
+
+        {% if loginform.non_field_errors %}
+                <p>{{loginform.non_field_errors}}</p>
+        {% endif %}
+    
+        <br>
+        <button id="login-bt" type="submit">Login</button>
+        <a id="login-link" href="{% url 'signUp' %}">Sign Up</a>
+        <a id="forget-link" href="{% url 'reset_password' %}" target="_blank">Forgot Password?</a>
+    </form>
+
+
+{%endblock%}
