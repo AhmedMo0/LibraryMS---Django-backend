@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-kp_&2)tw!lchprtvq$b7(5u2k$-(0b-bs(3zaeo^9+7qrmgw7!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['infinite-springs-37521.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['infinite-springs-37521.herokuapp.com/', '127.0.0.1']
 
 #Sending email for the Console   
 if DEBUG:
